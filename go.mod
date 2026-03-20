@@ -1,6 +1,6 @@
 module github.com/ojparkinson/service
 
-go 1.25.0
+go 1.26.1
 
 require go.opentelemetry.io/otel/trace v1.42.0
 

@@ -16,11 +16,11 @@ func main() {
 		},
 	}
 
-	traceIdFn := func(ctx context.Context) string {
+	traceIDFn := func(ctx context.Context) string {
 		return web.GetTraceID(ctx)
 	}
 
-	log = logger.NewWithEvents(os.Stdout, logger.LevelInfo, "SALES", traceIdFn, events)
+	log = logger.NewWithEvents(os.Stdout, logger.LevelInfo, "SALES", traceIDFn, events)
 
 	// ------------------------------------------------------------------------------------------
 
