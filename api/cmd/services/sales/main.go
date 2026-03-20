@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/ojparkinson/service/foundation/logger"
+	"github.com/ojparkinson/service/foundation/web"
 )
 
 func main() {
@@ -32,5 +33,5 @@ func main() {
 }
 
 func run(ctx context.Context, log *logger.Logger) error {
-
+	return nil
 }
