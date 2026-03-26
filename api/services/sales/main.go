@@ -3,6 +3,9 @@ package main
 import (
 	"context"
 	"os"
+	"os/signal"
+	"runtime"
+	"syscall"
 
 	"github.com/ojparkinson/service/foundation/logger"
 	"github.com/ojparkinson/service/foundation/web"
@@ -33,5 +36,15 @@ func main() {
 }
 
 func run(ctx context.Context, log *logger.Logger) error {
+
+	log.Info(ctx, "startup", runtime.GOMAXPROCS(0))
+
+	shutdown := make(chan os.Signal, 1)
+	signal.Notify(shutdown, syscall.SIGINT, syscall.SIGTERM)
+	sig := <-shutdown
+
+	log.Info(ctx, "shutdown", "status", "shhutdown started", "signal", sig)
+	defer log.Info(ctx, "shutdown", "status", "shutdown complete", "signal", sig)
+
 	return nil
 }
