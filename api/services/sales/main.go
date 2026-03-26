@@ -37,7 +37,7 @@ func main() {
 
 func run(ctx context.Context, log *logger.Logger) error {
 
-	log.Info(ctx, "startup", runtime.GOMAXPROCS(0))
+	log.Info(ctx, "startup", "GOMAXPROCS", runtime.GOMAXPROCS(0))
 
 	shutdown := make(chan os.Signal, 1)
 	signal.Notify(shutdown, syscall.SIGINT, syscall.SIGTERM)
